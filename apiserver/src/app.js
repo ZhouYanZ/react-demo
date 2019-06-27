@@ -5,6 +5,7 @@ const { MONGODB_URI } = require('./utils/secrets');
 // Controllers (route handlers)
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
+const gradeController = require('./controllers/grade');
 
 // Create Express server
 const app = express();
@@ -42,8 +43,13 @@ app.post('/login', userController.postLogin); // 用户登录
 app.post('/signup', userController.postSignup); // 用户注册
 
 /**
- * API examples routes.
+ * API routes.
  */
+app
+  .route('/api/grade')
+  .get(gradeController.getGradeList)
+  .post(gradeController.createGrade)
+  .delete(gradeController.deleteGrade);
 
 /**
  * Error
