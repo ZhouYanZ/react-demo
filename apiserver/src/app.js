@@ -6,6 +6,7 @@ const { MONGODB_URI } = require('./utils/secrets');
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const gradeController = require('./controllers/grade');
+const studentController = require('./controllers/student');
 
 // Create Express server
 const app = express();
@@ -46,10 +47,15 @@ app.post('/sign-up', userController.postSignUp); // 用户注册
  * API routes.
  */
 app
-  .route('/api/grade')
+  .route('/api/grade/:id?')
   .get(gradeController.getGradeList)
   .post(gradeController.createGrade)
   .delete(gradeController.deleteGrade);
+app
+  .route('/api/student/:id?')
+  .get(studentController.getStudentList)
+  .post(studentController.addStudent)
+  .delete(studentController.delStudent);
 
 /**
  * Error
