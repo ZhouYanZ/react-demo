@@ -26,7 +26,7 @@ mongoose
   });
 
 // Express configuration
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 9090);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
