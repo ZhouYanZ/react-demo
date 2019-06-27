@@ -39,8 +39,8 @@ app.use((req, res, next) => {
  * Primary app routes.
  */
 app.get('/', homeController.index);
-app.post('/login', userController.postLogin); // 用户登录
-app.post('/signup', userController.postSignup); // 用户注册
+app.post('/sign-in', userController.postSignIn); // 用户登录
+app.post('/sign-up', userController.postSignUp); // 用户注册
 
 /**
  * API routes.
