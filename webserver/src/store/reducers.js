@@ -1,8 +1,4 @@
-const initUserInfo = {
-  email: '',
-  name: ''
-};
-export const user = (state = initUserInfo, actions) => {
-  let newState = JSON.parse(JSON.stringify(state));
-  return newState;
-};
+// 引入拆分出去 reducer
+import userReducer from '../views/login/store/reducer';
+
+export const user = userReducer;
