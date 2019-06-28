@@ -5,7 +5,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 // import Login from '@/views/login';
 // import Sign from '@/views/sign';
 // import Home from '@/views/home';
-
+ 
 const Login = Loadable({
   // 需要异步加载的组件
   loader: () => import('./views/login'),
@@ -28,7 +28,7 @@ const Home = Loadable({
 });
 
 export default class App extends Component {
-  render() {
+  render() {v 
     return (
       <Router>
         <Switch>
