@@ -55,9 +55,9 @@ const LoginUI = Form.create({})(Login);
 
 export default connect(
   null,
-  dispatch => ({
+  (dispatch, props) => ({
     handleSignIn(values) {
-      dispatch(actions.asyncSignIn(values));
+      dispatch(actions.asyncSignIn(values, props));
     }
   })
 )(LoginUI);

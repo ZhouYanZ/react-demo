@@ -7,7 +7,7 @@ export const onSignIn = value => ({
   value
 });
 
-export const asyncSignIn = values => {
+export const asyncSignIn = (values, props) => {
   return dispatch => {
     // 异步操作
     http
@@ -20,6 +20,12 @@ export const asyncSignIn = values => {
         // 这里就不需要判断是否 code
         dispatch(onSignIn(res.data));
         window.localStorage.setItem('user', JSON.stringify(res.data));
+
+        // 跳转页面
+        let redirect = props.location.state
+          ? props.location.state.redirect
+          : '/';
+        props.history.replace(redirect);
       });
   };
 };

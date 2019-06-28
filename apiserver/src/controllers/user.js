@@ -14,7 +14,7 @@ const postSignIn = async (req, res, next) => {
 
     if (!isMatch) return res.send({ code: -1, msg: '用户名或密码错误' });
 
-    res.send({ code: 0, msg: 'ok' });
+    res.send({ code: 0, msg: 'ok', data: { email: user.email } });
   });
 };
 

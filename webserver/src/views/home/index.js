@@ -18,6 +18,12 @@ export default class Home extends Component {
     }));
   };
 
+  handleSignOut = () => {
+    window.localStorage.removeItem('user');
+    // 刷新页面
+    window.location.reload();
+  };
+
   render() {
     return (
       <HomeWrap>
@@ -42,7 +48,7 @@ export default class Home extends Component {
                 onClick={this.toggle}
               />
 
-              <Button>退出登录</Button>
+              <Button onClick={this.handleSignOut}>退出登录</Button>
             </HeaderWrap>
             <ContentWrap>
               <Switch>

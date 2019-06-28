@@ -15,7 +15,7 @@ export const HeaderWrap = styled(Header)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ccc;
+  background: #ccc !important;
 
   .trigger {
     font-size: 24px;
