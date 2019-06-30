@@ -85,7 +85,8 @@ app
   .route("/api/student/:id?")
   .get(studentController.getStudentList)
   .post(studentController.addStudent)
-  .delete(studentController.delStudent);
+  .delete(studentController.delStudent)
+  .put(studentController.updStudent);
 
 /**
  * Error
