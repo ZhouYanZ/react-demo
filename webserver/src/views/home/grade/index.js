@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 class Grade extends React.Component {
   render() {
-    return <div>班级</div>;
+   
   }
 }
 
