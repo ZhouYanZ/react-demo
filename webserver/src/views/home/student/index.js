@@ -1,7 +1,8 @@
 import React from 'react';
-import { Table, Button, Modal, Form, Input, Radio } from 'antd';
+import { Table, Button, Modal, Form, Input, Radio, Select } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from './store/actionCreates';
+import * as gradeActions from '../grade/store/actionCreates';
 
 class Student extends React.Component {
   columns = [
@@ -34,7 +35,9 @@ class Student extends React.Component {
             </Button>
             <Button
               type="danger"
-              onClick={this.props.handleDelStudent.bind(this, row._id)}
+              onClick={() => {
+                this.showDelModal(row._id);
+              }}
             >
               删除
             </Button>
@@ -43,6 +46,19 @@ class Student extends React.Component {
       }
     }
   ];
+
+  /**
+   * 显示删除的对话提示框
+   */
+  showDelModal = id => {
+    Modal.confirm({
+      title: '删除警告',
+      content: '请确认是否删除',
+      onOk: () => {
+        this.props.handleDelStudent(id);
+      }
+    });
+  };
 
   /**
    * 显示弹出框的方法
@@ -80,6 +96,22 @@ class Student extends React.Component {
                 </Radio.Group>
               )}
             </Form.Item>
+            <Form.Item label="选择班级">
+              {getFieldDecorator('gradeId', {
+                initialValue:
+                  curStudentInfo.gradeId && curStudentInfo.gradeId._id
+              })(
+                <Select>
+                  {this.props.gradeList.map(item => {
+                    return (
+                      <Select.Option key={item._id} value={item._id}>
+                        {item.gradeName}
+                      </Select.Option>
+                    );
+                  })}
+                </Select>
+              )}
+            </Form.Item>
           </Form>
         </Modal>
       );
@@ -105,11 +137,13 @@ class Student extends React.Component {
 
   componentDidMount() {
     this.props.handleGetStudentList();
+    this.props.handleGetGradeList();
   }
 }
 
 export default connect(
-  ({ student }) => ({
+  ({ student, grade }) => ({
+    gradeList: grade.list,
     list: student.list,
     visible: student.visible,
     curStudentId: student.curStudentId
@@ -142,6 +176,10 @@ export default connect(
     handleModalCancal() {
       console.log(111);
       dispatch(actions.onChgVisible());
+    },
+    // 获取班级列表数据
+    handleGetGradeList() {
+      dispatch(gradeActions.asyncGetGradeList());
     }
   })
 )(Student);

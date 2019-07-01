@@ -57,11 +57,14 @@ export const asyncUpdStudent = values => {
         }
       })
       .then(res => {
-        dispatch({
-          type: Types.UPD_STUDENT,
-          id: curStudentId,
-          values
-        });
+        // 不需要去修改仓库了，应该改起来太麻烦
+        // dispatch({
+        //   type: Types.UPD_STUDENT,
+        //   id: curStudentId,
+        //   values
+        // });
+        // 直接从新派发一个获取学生列表数据的动作
+        dispatch(asyncStudentList());
       });
   };
 };
