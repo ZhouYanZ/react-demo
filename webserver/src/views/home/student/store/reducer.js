@@ -1,7 +1,7 @@
-import * as Types from "./actionTypes";
+import * as Types from './actionTypes';
 
 const initState = {
-  curStudentId: "", // 当前操作的学生Id
+  curStudentId: '', // 当前操作的学生Id
   visible: false, // 用来控制 弹出框
   list: [], // 学生的列表数据
   pageTotal: 1 // 总的页码数
@@ -26,6 +26,11 @@ export default (state = initState, action) => {
 
   if (action.type === Types.SET_CUR_STUDENT_ID) {
     newState.curStudentId = action.id;
+  }
+
+  if (action.type === Types.UPD_STUDENT) {
+    let index = newState.list.findIndex(item => item._id === action.id);
+    newState.list[index] = { ...newState.list[index], ...action.values };
   }
 
   return newState;
