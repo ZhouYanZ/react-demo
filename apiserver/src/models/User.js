@@ -1,3 +1,6 @@
+/**
+ * 用户模块
+ */
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 

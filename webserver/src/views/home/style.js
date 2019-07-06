@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Layout } from 'antd';
+import styled from "styled-components";
+import { Layout } from "antd";
 const { Header, Sider, Content } = Layout;
 
 export const HomeWrap = styled.div`
@@ -15,14 +15,16 @@ export const HeaderWrap = styled(Header)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ccc;
+  background: #ccc !important;
 
   .trigger {
     font-size: 24px;
   }
 `;
 
-export const ContentWrap = styled(Content)``;
+export const ContentWrap = styled(Content)`
+  overflow-y: auto;
+`;
 
 export const Logo = styled.div`
   height: 64px;
